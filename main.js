@@ -32,12 +32,16 @@ let { data: News, error } = await supabase
   console.log(News)
   News.forEach((data) => {
     // future me (use document.createElement) and the apeend it to body
-  NewsSection.innerHTML = `
-  <div id="NewsTeller">
+  let NewsTeller = document.createElement('div')
+  NewsTeller.id = 'NewsTeller'
+  NewsTeller.style.backgroundImage = `url(${data.ImageUrl})`
+  NewsTeller.style.backgroundSize = 'cover'
+  NewsTeller.innerHTML = `
   <h1 id="HeadLine">${data.Title}</h1>
  <p id="Info">${data.Info}</p>
- </div>`
- console.log(News);
+ `
+ //console.log(NewsTeller);
+ NewsSection.append(NewsTeller)
 })
 }
 Init()
