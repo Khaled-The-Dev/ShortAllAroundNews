@@ -5,6 +5,7 @@ body {
     font-size: 15pt;
     margin: 0;
     padding: 0;
+    font-family: 'Cairo', sans-serif;
 }
 
 .Navbar {
@@ -12,10 +13,12 @@ body {
    height: 50px;
    background: black;
    display: flex;
+   margin: 0;
 }
 
 .NavItems {
    width: 100%;
+   padding: 0;
    height: 2vh;
    display: flex;
    align-items: center;
@@ -27,6 +30,7 @@ body {
 a {
    color: currentColor;
    text-decoration: grey;
+   font-family: 'Cairo', sans-serif;
 }
 
 #NewsSection {
@@ -49,4 +53,8 @@ a {
    justify-content: space-evenly;
    justify-content: flex-start;
    color: white;
+}
+
+@media (width: 700px) {
+  
 }
