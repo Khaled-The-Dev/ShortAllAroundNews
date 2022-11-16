@@ -44,7 +44,7 @@ async function AddDataToDataBase() {
 const formdata = new FormData();
 formdata.append("key", "54987bd37799c5b589185817cee5c705");
 formdata.append("url", `${data.url}`);
-formdata.append("sentences", "5");
+formdata.append("sentences", 5);
 const requestOptions = {
   method: 'POST',
   body: formdata,
@@ -52,16 +52,21 @@ const requestOptions = {
 };
        fetch(`http://api.meaningcloud.com/summarization-1.0`, requestOptions)
        .then(Response => Response.json())
-       .then(info => {
- await supabase
+       .then(async (info) =>  {
+         let Data = {
+           Title: data.title,
+           ImageUrl: data.urlToImage,
+           Info: info.summary
+         }
+         
+ let { item, error } = supabase
   .from('News')
   .insert([
-    { Title: data.title },
-    { Info: info.summary },
-    { ImageUrl: data.urlToImage }
-  ])
+     Data
+  ]).then(() => {
+  })
 
-        console.log(info, data);
+        //console.log(typeof info, info);
        })
      })
    })
@@ -71,7 +76,6 @@ async function Init() {
 let { data: News, error } = await supabase
   .from('News')
   .select('*')
-  console.log(News)
   News.forEach((data) => {
     // future me (use document.createElement) and the apeend it to body
   let NewsTeller = document.createElement('div')
@@ -84,6 +88,8 @@ let { data: News, error } = await supabase
  `
  //console.log(NewsTeller);
  NewsSection.append(NewsTeller)
+ setTimeout(() => {
+ NewsTeller.scrollIntoView({behavior: 'smooth'})}, 300)
 })
 }
 Init()

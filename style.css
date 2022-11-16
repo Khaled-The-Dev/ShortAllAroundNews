@@ -52,7 +52,8 @@ a {
    align-items: center;
    justify-content: space-evenly;
    justify-content: flex-start;
-   color: white;
+   color: black;
+   border: 8px black;
 }
 
 @media (width: 700px) {
