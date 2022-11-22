@@ -10,7 +10,7 @@ body {
 
 .Navbar {
    width: 100vw;
-   height: 50px;
+   height: 4vh;
    background: black;
    display: flex;
    margin: 0;
@@ -25,6 +25,7 @@ body {
    justify-content: center;
    justify-content: space-evenly;
    color: white;
+   font-size: 15pt;
 }
 
 a {
@@ -36,12 +37,13 @@ a {
 #NewsSection {
    position: relative;
    width: 100vw;
-   height: 98vh;
+   height: 96vh;
    color: black;
    display: flex;
    align-items: center;
    flex-direction: column;
    justify-content: flex-start;
+   gap: 50px;
 }
 
 #NewsTeller {
@@ -55,6 +57,13 @@ a {
    color: black;
    border: 8px black;
 }
+
+.ImgDiv {
+   width: 60%;
+   height: 300px;
+   background-size: cover;
+}
+
 
 @media (width: 700px) {
   

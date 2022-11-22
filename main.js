@@ -1,3 +1,5 @@
+//Todo: Try And make so that summarize api requests only happen for new Database items And Create Another table to store unsumorized text and summarize then add it to news table
+
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 // Variables
 
@@ -35,54 +37,20 @@ const supabase = createClient(SupabaseUrl, SupabaseKey, options)
 
 
 async function AddDataToDataBase() {
-    fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${NewsApiKey}`)
-   .then(res => res.json())
-   .then(data => {
-     data.articles.forEach((data) => {
-    //  console.log(data.url);
     
-const formdata = new FormData();
-formdata.append("key", "54987bd37799c5b589185817cee5c705");
-formdata.append("url", `${data.url}`);
-formdata.append("sentences", 5);
-const requestOptions = {
-  method: 'POST',
-  body: formdata,
-  redirect: 'follow'
-};
-       fetch(`http://api.meaningcloud.com/summarization-1.0`, requestOptions)
-       .then(Response => Response.json())
-       .then(async (info) =>  {
-         let Data = {
-           Title: data.title,
-           ImageUrl: data.urlToImage,
-           Info: info.summary
-         }
-         
- let { item, error } = supabase
-  .from('News')
-  .insert([
-     Data
-  ]).then(() => {
-  })
-
-        //console.log(typeof info, info);
-       })
-     })
-   })
 }
 
 async function Init() {
 let { data: News, error } = await supabase
   .from('News')
   .select('*')
+  .order('CreatedAt')
   News.forEach((data) => {
     // future me (use document.createElement) and the apeend it to body
   let NewsTeller = document.createElement('div')
   NewsTeller.id = 'NewsTeller'
-  NewsTeller.style.backgroundImage = `url(${data.ImageUrl})`
-  NewsTeller.style.backgroundSize = 'cover'
   NewsTeller.innerHTML = `
+   <div class="ImgDiv" style="background-image: url(${data.ImageUrl});"></div>
   <h1 id="HeadLine">${data.Title}</h1>
  <p id="Info">${data.Info}</p>
  `
