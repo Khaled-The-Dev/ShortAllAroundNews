@@ -1,7 +1,9 @@
 const { schedule } = require('@netlify/functions')
 
-const NewsApiKey = '4b37e040fd5244e7be79bbe50eeb16a8'
+require('dotenv').config()
 
+
+const NewsApiKey = process.env.NEWSAPIKEY
 const handler = async function(event, context) {
      fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
    .then(res => res.json())
@@ -11,7 +13,7 @@ const handler = async function(event, context) {
     //  console.log(data.url);
     
 const formdata = new FormData();
-formdata.append("key", "54987bd37799c5b589185817cee5c705");
+formdata.append("key", process.env.SUMMARIZEKEY);
 formdata.append("url", `${data.url}`);
 formdata.append("sentences", 5);
 const requestOptions = {
