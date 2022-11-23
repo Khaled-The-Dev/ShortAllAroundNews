@@ -1,8 +1,4 @@
 //Todo: Try And make so that summarize api requests only happen for new Database items And Create Another table to store unsumorized text and summarize then add it to news table
-javascript:(function () { var script = document.createElement('script'); script.src="//cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() } })();
-
-require('dotenv').config()
-
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 // Variables
