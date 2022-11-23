@@ -1,16 +1,17 @@
 //Todo: Try And make so that summarize api requests only happen for new Database items And Create Another table to store unsumorized text and summarize then add it to news table
+import ApiKeys from 'ApiKeys.js'
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 // Variables
 
 //NewsApi variables
-const NewsApiKey = process.env.NEWSAPIKEY
+const NewsApiKey = ApiKeys.NewsApiKey
 
 
 
 // Supabase Installation Variables
-const SupabaseKey = process.env.SUPABASEKEY
-const SupabaseUrl = process.env.SUPABASEURL
+const SupabaseKey = ApiKeys.SummarizeKey
+const SupabaseUrl = ApiKeys.SupabaseUrl
 const options = {
   db: {
     schema: 'public',

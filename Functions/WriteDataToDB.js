@@ -1,9 +1,10 @@
 const { schedule } = require('@netlify/functions')
 
-require('dotenv').config()
+import ApiKeys from '/ApiKeys.js'
 
 
-const NewsApiKey = process.env.NEWSAPIKEY
+
+const NewsApiKey = ApiKeys.NewsApiKey
 const handler = async function(event, context) {
      fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
    .then(res => res.json())
@@ -13,7 +14,7 @@ const handler = async function(event, context) {
     //  console.log(data.url);
     
 const formdata = new FormData();
-formdata.append("key", process.env.SUMMARIZEKEY);
+formdata.append("key", ApiKeys.SummarizeKey);
 formdata.append("url", `${data.url}`);
 formdata.append("sentences", 5);
 const requestOptions = {
