@@ -1,5 +1,5 @@
 //Todo: Try And make so that summarize api requests only happen for new Database items And Create Another table to store unsumorized text and summarize then add it to news table
-import ApiKeys from 'ApiKeys.js'
+import ApiKeys from '/ApiKeys.js'
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 // Variables
@@ -62,4 +62,4 @@ let { data: News, error } = await supabase
 })
 }
 Init()
-AddDataToDataBase()
+console.error()
