@@ -1,6 +1,6 @@
 const { schedule } = require('@netlify/functions')
 
-import ApiKeys from '/ApiKeys.js'
+import ApiKeys from '//ApiKeys.js'
 
 
 
