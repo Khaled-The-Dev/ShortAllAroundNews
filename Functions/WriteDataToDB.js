@@ -6,7 +6,7 @@ import ApiKeys from '//ApiKeys.js'
 
 const NewsApiKey = ApiKeys.NewsApiKey
 const handler = async function(event, context) {
-     fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
+    try {fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
    .then(res => res.json())
    .then(data => {
      console.log(data);
@@ -40,6 +40,17 @@ const requestOptions = {
        })
      })
    })
+      
+    } catch (err) {
+      return {
+      statusCode: err.statusCode || 500,
+      body: JSON.stringify({
+        error: err.message
+        })
+      }
+      document.write(err.message)
+    }
+     
     return {
         statusCode: 200,
     };
