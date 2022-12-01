@@ -10,7 +10,7 @@ const NewsApiKey = ApiKeys.NewsApiKey
 
 
 // Supabase Installation Variables
-const SupabaseKey = ApiKeys.SummarizeKey
+const SupabaseKey = ApiKeys.SupabaseKey
 const SupabaseUrl = ApiKeys.SupabaseUrl
 const options = {
   db: {
@@ -62,4 +62,3 @@ let { data: News, error } = await supabase
 })
 }
 Init()
-console.error()
