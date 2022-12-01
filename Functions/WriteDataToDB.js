@@ -1,10 +1,10 @@
 const { schedule } = require('@netlify/functions')
 
-import ApiKeys from '//ApiKeys.js'
+import ApiKeys2 from './ApiKeys2.js'
 
 
 
-const NewsApiKey = ApiKeys.NewsApiKey
+const NewsApiKey = ApiKeys2.NewsApiKey
 const handler = async function(event, context) {
     try {fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
    .then(res => res.json())
