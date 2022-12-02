@@ -2,9 +2,26 @@ const { schedule } = require('@netlify/functions')
 
 import ApiKeys2 from './ApiKeys2.js'
 
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 
 
 const NewsApiKey = ApiKeys2.NewsApiKey
+
+const options = {
+  db: {
+    schema: 'public',
+  },
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true
+  },
+  global: {
+    headers: { 'x-my-custom-header': 'ShortAllAroundNews' },
+  },
+}
+const supabase = createClient(ApiKeys2.SupabaseUrl, ApiKeys2.SupabaseKey, options)
+
 const handler = async function(event, context) {
     try {fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
    .then(res => res.json())
@@ -14,7 +31,7 @@ const handler = async function(event, context) {
     //  console.log(data.url);
     
 const formdata = new FormData();
-formdata.append("key", ApiKeys.SummarizeKey);
+formdata.append("key", ApiKeys2.SummarizeKey);
 formdata.append("url", `${data.url}`);
 formdata.append("sentences", 5);
 const requestOptions = {
