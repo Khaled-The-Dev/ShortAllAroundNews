@@ -1,10 +1,9 @@
-const { schedule } = require('@netlify/functions')
+import { schedule } from '@netlify/functions'
 
-import ApiKeys2 from './ApiKeys2.js'
 
 import { createClient } from '@supabase/supabase-js'
 
-const NewsApiKey = ApiKeys2.NewsApiKey
+const NewsApiKey = process.env.NEWSAPIKEY
 
 const options = {
   db: {
@@ -19,7 +18,7 @@ const options = {
     headers: { 'x-my-custom-header': 'ShortAllAroundNews' },
   },
 }
-const supabase = createClient(ApiKeys2.SupabaseUrl, ApiKeys2.SupabaseKey, options)
+const supabase = createClient(process.env.SUPBASEURL, process.env.SUPABASEKEY, options)
 
 const handler = async function(event, context) {
     try {fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
@@ -30,7 +29,7 @@ const handler = async function(event, context) {
     //  console.log(data.url);
     
 const formdata = new FormData();
-formdata.append("key", ApiKeys2.SummarizeKey);
+formdata.append("key", process.env.SUMMARIZEKEY);
 formdata.append("url", `${data.url}`);
 formdata.append("sentences", 5);
 const requestOptions = {
