@@ -25,7 +25,8 @@ const SUMMARIZEKEY =  '54987bd37799c5b589185817cee5c705'
 const supabase = createClient(SUPBASEURL, SUPABASEKEY, options)
 
 const handler = async function(event, context) {
-    try {fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
+    try {
+      fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
    .then(res => res.json())
    .then(data => {
      console.log(data);
@@ -54,20 +55,19 @@ const requestOptions = {
   .from('News')
   .insert([
      Data
-  ]).then(() => {
-  })
+  ])
        })
      })
    })
       
-    } catch (err) {
+    } 
+    catch (err) {
       return {
       statusCode: err.statusCode || 500,
       body: JSON.stringify({
-        error: err.message
+        error: err.message,
         })
       }
-      document.write(err.message)
     }
      
     return {
