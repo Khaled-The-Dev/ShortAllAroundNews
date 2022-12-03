@@ -3,6 +3,8 @@ import { schedule } from '@netlify/functions'
 
 import { createClient } from '@supabase/supabase-js'
 
+require('dotenv').config()
+
 const NewsApiKey = process.env.NEWSAPIKEY
 
 const options = {
