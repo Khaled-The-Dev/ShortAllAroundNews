@@ -1,0 +1,13 @@
+* {
+   text-align: center;
+   color: #9D9FB4;
+}
+body {
+   font-size: 5rem;
+   background: #171719;
+}
+
+.About {
+   width: 100vw;
+   height: 100vh;
+}

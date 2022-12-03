@@ -12,6 +12,7 @@ body {
 .Navbar {
    width: 100vw;
    height: 4vh;
+   position: sticky;
    background: black;
    display: flex;
    margin: 0;
@@ -21,6 +22,7 @@ body {
    width: 100%;
    padding: 0;
    height: 2vh;
+   position: sticky;
    display: flex;
    align-items: center;
    justify-content: center;
