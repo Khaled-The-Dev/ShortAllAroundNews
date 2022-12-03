@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Cairo', sans-serif;
+    background: #171719;
 }
 
 .Navbar {
@@ -35,7 +36,6 @@ a {
 }
 
 #NewsSection {
-   position: relative;
    width: 100vw;
    height: 96vh;
    color: black;
@@ -43,7 +43,7 @@ a {
    align-items: center;
    flex-direction: column;
    justify-content: flex-start;
-   gap: 50px;
+   gap: 300px;
 }
 
 #NewsTeller {
@@ -54,11 +54,12 @@ a {
    align-items: center;
    justify-content: space-evenly;
    justify-content: flex-start;
-   color: black;
+   color: white;
    border: 8px black;
 }
 
 .ImgDiv {
+   min-height: 300px;
    width: 60%;
    background-size: cover;
 }

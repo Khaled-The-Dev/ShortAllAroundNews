@@ -2,8 +2,7 @@ const { schedule } = require('@netlify/functions')
 
 import ApiKeys2 from './ApiKeys2.js'
 
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
-
+import { createClient } from '@supabase/supabase-js'
 
 const NewsApiKey = ApiKeys2.NewsApiKey
 
