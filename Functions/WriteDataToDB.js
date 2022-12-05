@@ -3,6 +3,8 @@ const { schedule } = require('@netlify/functions')
 
 import { createClient } from '@supabase/supabase-js'
 
+let NetlifyData
+
 const NewsApiKey = '4b37e040fd5244e7be79bbe50eeb16a8'
 
 const options = {
@@ -45,6 +47,10 @@ const requestOptions = {
        fetch(`http://api.meaningcloud.com/summarization-1.0`, requestOptions)
        .then(Response => Response.json())
        .then(async (info) =>  {
+          NetlifyData = {
+           Title: data.title,
+           Info: info.summary
+         }
          let Data = {
            Title: data.title,
            ImageUrl: data.urlToImage,
@@ -65,13 +71,16 @@ const requestOptions = {
       return {
       statusCode: err.statusCode || 500,
       body: JSON.stringify({
-        error: err.message,
-        })
+      error: err.message,
+      })
       }
     }
      
     return {
         statusCode: 200,
+        body: JSON.stringify({
+          data: NetlifyData,
+        })
     };
 };
 
