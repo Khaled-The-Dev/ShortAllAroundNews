@@ -5,6 +5,7 @@
   "repository": "https://github.com/Khaled-The-Dev/ShortAllAroundNews.git",
   "dependencies": {
     "node-fetch": "^2.6.1",
-    "netlify-lambda": "1.4.3"
+    "netlify-lambda": "1.4.3",
+    "form-data": "^4.0.0"
   }
 }

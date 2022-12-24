@@ -5,6 +5,7 @@ import { schedule } from'@netlify/functions'
 import { createClient } from '@supabase/supabase-js'
 
 import fetch from 'node-fetch';
+import FormData from 'form-data'
 let NetlifyData
 
 const NewsApiKey = '4b37e040fd5244e7be79bbe50eeb16a8'
