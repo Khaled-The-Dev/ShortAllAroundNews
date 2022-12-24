@@ -56,14 +56,14 @@ const requestOptions = {
            Info: info.summary
          }
          
-let { item, error } = supabase
+let { data, error } = await supabase
   .from('News')
   .insert([
      Data
   ])
        })
      
-     console.log(data);
+     console.log(data, info);
     return {
         statusCode: 200,
         body: JSON.stringify({
