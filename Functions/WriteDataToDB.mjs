@@ -61,6 +61,9 @@ let { data, error } = await supabase
   .insert([
      Data
   ])
+  .then(() => {
+     console.log('Insterted Data on + ', Date.now());
+  })
        })
      
      console.log(data, info);
