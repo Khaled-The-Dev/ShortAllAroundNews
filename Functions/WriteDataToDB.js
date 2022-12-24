@@ -28,7 +28,7 @@ const SUPABASEKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const SUMMARIZEKEY =  '54987bd37799c5b589185817cee5c705'
 const supabase = createClient(SUPBASEURL, SUPABASEKEY, options)
 
-const handler = async function(event, context) {
+export const handler = schedule("*****" ,async function(event, context) {
    const response = await fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
    const data = await response.json()
      data.articles.forEach((data) => {
@@ -61,13 +61,13 @@ let { item, error } = supabase
      Data
   ])
        })
-     }
      
+     console.log(data);
     return {
         statusCode: 200,
         body: JSON.stringify({
           data: NetlifyData,
         })
-    };
+    }
+})
 
-module.exports.handler = schedule("@hourly", handler);
