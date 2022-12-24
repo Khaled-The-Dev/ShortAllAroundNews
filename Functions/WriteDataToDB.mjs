@@ -36,7 +36,7 @@ export const handler = schedule("@hourly" ,async (event, context) => {
     //  console.log(data.url);
     
 const formdata = new FormData();
-formdata.append("key", process.env.SUMMARIZEKEY);
+formdata.append("key", SUMMARIZEKEY);
 formdata.append("url", `${data.url}`);
 formdata.append("sentences", 5);
 const requestOptions = {
