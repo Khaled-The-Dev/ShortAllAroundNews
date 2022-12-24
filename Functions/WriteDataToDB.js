@@ -1,9 +1,9 @@
-import { schedule } from '@netlify/functions'
+const schedule = require('@netlify/functions')
 
-import { fetch } from'node-fetch'
+const fetch = require('node-fetch')
 // modify the build command to 'cd Functions && npm init -y && npm install @netlify/function @supabase'
 
-import { createClient } from '@supabase/supabase-js'
+const createClient = require('@supabase/supabase-js')
 
 let NetlifyData
 
