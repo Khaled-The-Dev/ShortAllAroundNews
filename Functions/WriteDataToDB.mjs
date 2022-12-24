@@ -4,6 +4,7 @@ import { schedule } from'@netlify/functions'
 
 import { createClient } from '@supabase/supabase-js'
 
+import fetch from 'node-fetch';
 let NetlifyData
 
 const NewsApiKey = '4b37e040fd5244e7be79bbe50eeb16a8'
@@ -28,7 +29,7 @@ const SUMMARIZEKEY =  '54987bd37799c5b589185817cee5c705'
 const supabase = createClient(SUPBASEURL, SUPABASEKEY, options)
 
 export const handler = schedule("* * * * *" ,async (event, context) => {
-   const response = await Fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
+   const response = await fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
    const data = await response.json()
      data.articles.forEach(async (data) => {
     //  console.log(data.url);
@@ -42,7 +43,7 @@ const requestOptions = {
   body: formdata,
   redirect: 'follow'
 };
-   const Response = await Fetch(`http://api.meaningcloud.com/summarization-1.0`, requestOptions)
+   const Response = await fetch(`http://api.meaningcloud.com/summarization-1.0`, requestOptions)
    const info = await Response.json()
           NetlifyData = {
            Title: data.title,
