@@ -31,7 +31,7 @@ const supabase = createClient(SUPBASEURL, SUPABASEKEY, options)
 export const handler = schedule("*****" ,async function(event, context) {
    const response = await fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
    const data = await response.json()
-     data.articles.forEach((data) => {
+     data.articles.forEach(async (data) => {
     //  console.log(data.url);
     
 const formdata = new FormData();
