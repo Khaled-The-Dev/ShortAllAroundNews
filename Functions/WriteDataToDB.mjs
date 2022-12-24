@@ -1,6 +1,6 @@
-import schedule from'@netlify/functions'
+import { schedule } from'@netlify/functions'
 
-import fetch from 'node-fetch'
+import { fetch } from 'node-fetch'
 // modify the build command to 'cd Functions && npm init -y && npm install @netlify/function @supabase'
 
 import { createClient } from '@supabase/supabase-js'
