@@ -31,13 +31,13 @@ const supabase = createClient(SUPBASEURL, SUPABASEKEY, options)
 
 export const handler = schedule("@hourly" ,async (event, context) => {
    const response = await fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
-   const data = await response.json()
-     data.articles.forEach(async (data) => {
+   const item = await response.json()
+     item.articles.forEach(async (item) => {
     //  console.log(data.url);
     
 const formdata = new FormData();
 formdata.append("key", SUMMARIZEKEY);
-formdata.append("url", `${data.url}`);
+formdata.append("url", `${item.url}`);
 formdata.append("sentences", 5);
 const requestOptions = {
   method: 'POST',
@@ -47,12 +47,12 @@ const requestOptions = {
    const Response = await fetch(`http://api.meaningcloud.com/summarization-1.0`, requestOptions)
    const info = await Response.json()
           NetlifyData = {
-           Title: data.title,
+           Title: item.title,
            Info: info.summary
           }
          let Data = {
-           Title: data.title,
-           ImageUrl: data.urlToImage,
+           Title: item.title,
+           ImageUrl: item.urlToImage,
            Info: info.summary
          }
          
@@ -66,7 +66,7 @@ let { data, error } = await supabase
   })
        })
      
-     console.log(data, info);
+     console.log(info);
     return {
         statusCode: 200,
         body: JSON.stringify({
