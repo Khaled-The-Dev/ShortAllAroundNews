@@ -62,16 +62,13 @@ let { data, error } = await supabase
      Data
   ])
   .then(() => {
-     console.log('Insterted Data on + ', Date.now());
+     console.log('Insterted Data');
   })
        })
      
      console.log(info);
     return {
-        statusCode: 200,
-        body: JSON.stringify({
-          data: NetlifyData,
-        })
+        statusCode: 200
     }
 })
 

@@ -51,7 +51,7 @@ let { data: News, error } = await supabase
   let NewsTeller = document.createElement('div')
   NewsTeller.id = 'NewsTeller'
   NewsTeller.innerHTML = `
-   <div class="ImgDiv" style="background-image: url(${data.ImageUrl});"></div>
+   <div id="ImgDiv" style="background-image: url(${data.ImageUrl});"></div>
   <h1 id="HeadLine">${data.Title}</h1>
  <p id="Info">${data.Info}</p>
  `

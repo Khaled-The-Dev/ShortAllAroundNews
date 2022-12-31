@@ -1,5 +1,6 @@
 * {
    scroll-behavior: smooth;
+   background: #171719;
 }
 body {
     font-size: 15pt;
@@ -10,19 +11,19 @@ body {
 }
 
 .Navbar {
-   width: 100vw;
-   height: 4vh;
    position: sticky;
+   width: 100vw;
+   height: 75px;
    background: black;
    display: flex;
+   padding: 0;
    margin: 0;
 }
 
 .NavItems {
    width: 100%;
    padding: 0;
-   height: 2vh;
-   position: sticky;
+   height: 100%;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -38,35 +39,37 @@ a {
 }
 
 #NewsSection {
-   width: 100vw;
-   height: 96vh;
-   color: black;
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   justify-content: flex-start;
-   gap: 300px;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+  color: white;
 }
 
-#NewsTeller {
-   width: 100%;
-   min-height: 600px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-evenly;
-   justify-content: flex-start;
-   color: white;
-   border: 8px black;
-}
-
-.ImgDiv {
-   min-height: 300px;
-   width: 60%;
-   background-size: cover;
+hr {
+  height: 5px;
+  background: #171719;
 }
 
 
-@media (width: 700px) {
-  
+#NewsLetter {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+  color: white;
+}
+
+#ImgDiv {
+  width: 100%;
+  min-height: 600px;
+  background-size: cover;
 }
