@@ -45,7 +45,7 @@ async function Init() {
 let { data: News, error } = await supabase
   .from('News')
   .select('*')
-  .order('CreatedAt')
+  .order('CreatedAt', { ascending: false })
   News.forEach((data) => {
     // future me (use document.createElement) and the apeend it to body
   let NewsTeller = document.createElement('div')
@@ -57,8 +57,6 @@ let { data: News, error } = await supabase
  `
  //console.log(NewsTeller);
  NewsSection.append(NewsTeller)
- setTimeout(() => {
- NewsTeller.scrollIntoView({behavior: 'smooth'})}, 300)
 })
 }
 Init()
