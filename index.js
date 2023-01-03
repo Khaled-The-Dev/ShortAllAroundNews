@@ -8,10 +8,10 @@ const NewsSection=document.querySelector('#NewsSection')
 const supabase=createClient(SupabaseUrl,SupabaseKey,options)
 async function AddDataToDataBase(){}
 async function Init(){let{data:News,error}=await supabase.from('News').select('*').order('CreatedAt', {ascending: false})
-News.forEach((data)=>{let NewsTeller=document.createElement('div')
+News.forEach((data)=>{let NewsTeller=document.createElement('article')
 NewsTeller.id='NewsTeller'
 NewsTeller.innerHTML=`
-   <div id="ImgDiv" style="background-image: url(${data.ImageUrl});"></div>
+   <img src="${data.ImageUrl}" width=100% height=600 loading="lazy" alt="${data.ImgAlt}"></img>
   <h1 id="HeadLine">${data.Title}</h1>
  <p id="Info">${data.Info}</p>
  `

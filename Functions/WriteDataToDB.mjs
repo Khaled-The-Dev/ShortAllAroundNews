@@ -53,7 +53,8 @@ const requestOptions = {
          let Data = {
            Title: item.title,
            ImageUrl: item.urlToImage,
-           Info: info.summary
+           Info: info.summary,
+           ImgAlt: item.descreption
          }
          
 let { data, error } = await supabase
