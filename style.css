@@ -9,7 +9,7 @@ body {
     font-family: 'Cairo', sans-serif;
     background: #171719;
 }
-
+/* */
 .Navbar {
    position: sticky;
    width: 100vw;
@@ -38,32 +38,19 @@ a {
 }
 
 #NewsSection {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
 }
 
-hr {
-  height: 5px;
-  background: #171719;
-}
+
 
 
 #NewsTeller {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
   color: white;
 }
 
-#ImgDiv {
-  width: 100%;
-  min-height: 600px;
-  background-size: cover;
+img {
+  object-fit: cover;
 }
