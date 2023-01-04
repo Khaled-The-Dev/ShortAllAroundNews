@@ -10,6 +10,6 @@ async function AddDataToDataBase(){}
 async function Init(){let{data:News,error}=await Supabase.from('News').select('*').order('CreatedAt', {ascending: false})
 News.forEach((data)=>{let NewsTeller=document.createElement('article')
 NewsTeller.id='NewsTeller'
-NewsTeller.innerHTML=`<div class="card w-full bg-base-100 shadow-xl"><figure><img src="${data.ImageUrl}" alt="${data.ImgAlt}" /></figure><div class="card-body"><h2 class="card-title">${data.Title}</h2><p>${data.Info}</p></div></div>`
+NewsTeller.innerHTML=`<img src="${data.ImageUrl}" width=100% height=600 loading="lazy"/><h1>${data.Title}</h1><p>${data.Info}</p>`
 NewsSection.append(NewsTeller)})}
 Init()
