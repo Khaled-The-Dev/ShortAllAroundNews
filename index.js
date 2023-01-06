@@ -6,7 +6,7 @@ window.onload = () => {
    document.head.append(googleAdsScript)
 }
 import ApiKeys from './ApiKeys.js'
-import{createClient}from './supabase.js'
+import{createClient}from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 const NewsSection=document.querySelector('#NewsSection')
 const supabase=createClient(ApiKeys.SupabaseUrl,ApiKeys.SupabaseKey)
 async function Init(){let{data:News,error}=await supabase.from('News').select('*').order('CreatedAt', {ascending:false})
