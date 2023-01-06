@@ -44,8 +44,7 @@ const requestOptions = {
   body: formdata,
   redirect: 'follow'
 };
-   const Response = await fetch(`http://api.meaningcloud.com/summarization-1.0`, requestOptions)
-   const info = await Response.json()
+   const Response = await fetch(`http://api.meaningcloud.com/summarization-1.0`, requestOptions).then(info => {
           NetlifyData = {
            Title: item.title,
            Info: info.summary
@@ -64,7 +63,7 @@ let { data, error } = await supabase
   ])
   .then(() => {
      console.log('Insterted Data');
-  })
+  })})
        })
     return {
         statusCode: 200
