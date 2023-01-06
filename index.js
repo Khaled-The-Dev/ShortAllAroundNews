@@ -1,10 +1,3 @@
-window.onload = () => {
-   let googleAdsScript = document.createElement('script')
-   googleAdsScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6142119155221792'
-   googleAdsScript.async = true
-   googleAdsScript.crossOrigin = 'anonymous'
-   document.head.append(googleAdsScript)
-}
 import ApiKeys from './ApiKeys.js'
 import{createClient}from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 const NewsSection=document.querySelector('#NewsSection')
