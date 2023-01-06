@@ -6,7 +6,7 @@ async function Init(){let{data:News,error}=await supabase.from('News').select('*
 News.forEach(data=>{let NewsTeller=document.createElement('article')
 NewsTeller.id='NewsTeller'
 NewsTeller.innerHTML=`
-   <img src="${data.ImageUrl}" width=100% height=400 loading="lazy" alt="${data.ImgAlt}"></img>
+   <img width=100% src="${data.ImageUrl}" loading="lazy" alt="${data.ImgAlt}"></img>
   <h1 id="HeadLine">${data.Title}</h1>
  <p id="Info">${data.Info}</p>
  `
