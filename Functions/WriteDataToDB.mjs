@@ -66,8 +66,6 @@ let { data, error } = await supabase
      console.log('Insterted Data');
   })
        })
-     
-     console.log(info);
     return {
         statusCode: 200
     }
