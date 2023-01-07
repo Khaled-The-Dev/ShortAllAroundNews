@@ -12,3 +12,6 @@ NewsTeller.id='NewsTeller'
 NewsTeller.innerHTML=`<div class="card w-full bg-base-100 shadow-xl"><figure><img src="${data.ImageUrl}" alt="${data.ImgAlt}" /></figure><div class="card-body"><h2 class="card-title">${data.Title}</h2><p>${data.Info}</p></div></div>`
 NewsSection.append(NewsTeller)})}
 Init()
+try {
+  /* code */
+} catch (e) {}
