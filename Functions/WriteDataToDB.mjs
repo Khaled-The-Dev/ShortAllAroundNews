@@ -7,9 +7,6 @@ import { createClient } from '@supabase/supabase-js'
 import fetch from 'node-fetch';
 import FormData from 'form-data'
 let NetlifyData
-
-const NewsApiKey = '4b37e040fd5244e7be79bbe50eeb16a8'
-
 const options = {
   db: {
     schema: 'public',
@@ -26,47 +23,54 @@ const options = {
 
 const SUPBASEURL = 'https://cslqxawajhhzbphncvbp.supabase.co'  
 const SUPABASEKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzbHF4YXdhamhoemJwaG5jdmJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjcxMjY5OTAsImV4cCI6MTk4MjcwMjk5MH0.gn_2JOlY9aj4EED2MfD_9honCPzqJGxqkwbq8RBIOWI'
-const SUMMARIZEKEY =  '54987bd37799c5b589185817cee5c705'
+
+
+const NewsApiKey = '4b37e040fd5244e7be79bbe50eeb16a8'
+
+const SUMMARIZEKEY = '54987bd37799c5b589185817cee5c705'
+
 const supabase = createClient(SUPBASEURL, SUPABASEKEY, options)
 
 export const handler = schedule("@hourly" ,async (event, context) => {
-   const response = await fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
-   const item = await response.json()
-     item.articles.forEach(async (item) => {
+  fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
+    .then(resp => resp.json())
+    .then((item) => {
+      for(let i = 0; i < item.articles.length; i++) {
     //  console.log(data.url);
     
 const formdata = new FormData();
 formdata.append("key", SUMMARIZEKEY);
-formdata.append("url", `${item.url}`);
+console.log(item.articles[i].url);
+formdata.append("url", `${item.articles[i].url}`);
 formdata.append("sentences", 5);
 const requestOptions = {
   method: 'POST',
   body: formdata,
   redirect: 'follow'
 };
-   const Response = await fetch(`http://api.meaningcloud.com/summarization-1.0`, requestOptions).then(async info => {
-          NetlifyData = {
-           Title: item.title,
-           Info: info.summary
-          }
-         let Data = {
-           Title: item.title,
-           ImageUrl: item.urlToImage,
-           Info: info.summary,
-           ImgAlt: item.descreption
-         }
-         
-let { data, error } = await supabase
+setTimeout(() => {
+  fetch(`https://api.meaningcloud.com/summarization-1.0`, requestOptions)
+   .then(res => res.json())
+   .then((info) => {
+       let PostData = {
+         Title: item[i].title,
+         Info: info.summary,
+         ImageUrl: item[i].urlToImage,
+         ImgAlt: item[i]. description
+       }
+       let { data, error } = await supabase
   .from('News')
   .insert([
-     Data
+     PostData
   ])
   .then(() => {
      console.log('Insterted Data');
-  })})
-       })
-    return {
-        statusCode: 200
-    }
+    })
+  })
+},5000)
+}
 })
-
+  return {
+    statusCode: 200
+  }
+})
