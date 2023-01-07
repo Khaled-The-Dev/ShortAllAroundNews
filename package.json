@@ -3,7 +3,7 @@
   "type": "module",
   "description": "",
   "scripts": {
-    "partytown": "partytown copylib /public/~parytown"
+    "partytown": "partytown copylib public/~partytown"
   },
   "repository": "https://github.com/Khaled-The-Dev/ShortAllAroundNews.git",
   "dependencies": {
