@@ -36,13 +36,13 @@
     };
   </script>
         <script type="module">
-        try{
-        import { partytownSnippet } from '@builder.io/partytown/integration';
+try {
+   import { partytownSnippet } from '@builder.io/partytown/integration';
 
-const snippetText = partytownSnippet();
-const el = document.createElement('script')
-el.innerText = snippetText
-document.body.append(el)
+      const snippetText = partytownSnippet();
+   const el = document.createElement('script')
+  el.innerText = snippetText
+  document.body.append(el)
 }
 catch (e) {
   
