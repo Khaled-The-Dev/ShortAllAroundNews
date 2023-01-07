@@ -44,7 +44,7 @@ const requestOptions = {
   body: formdata,
   redirect: 'follow'
 };
-   const Response = await fetch(`http://api.meaningcloud.com/summarization-1.0`, requestOptions).then(info => {
+   const Response = await fetch(`http://api.meaningcloud.com/summarization-1.0`, requestOptions).then(async info => {
           NetlifyData = {
            Title: item.title,
            Info: info.summary
