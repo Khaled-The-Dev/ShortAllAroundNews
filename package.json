@@ -2,6 +2,9 @@
   "name": "ShortAllaroundNews",
   "type": "module",
   "description": "",
+  "scripts": {
+    "partytown": "partytown copylib /public/~parytown"
+  },
   "repository": "https://github.com/Khaled-The-Dev/ShortAllAroundNews.git",
   "dependencies": {
     "node-fetch": "^2.6.1",
