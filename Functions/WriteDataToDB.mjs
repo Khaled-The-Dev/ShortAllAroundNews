@@ -58,6 +58,7 @@ setTimeout(() => {
          ImageUrl: item[i].urlToImage,
          ImgAlt: item[i]. description
        }
+       console.log(item[i], info);
        let { data, error } = await supabase
   .from('News')
   .insert([
