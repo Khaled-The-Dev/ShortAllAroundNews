@@ -32,7 +32,7 @@ const SUMMARIZEKEY = '54987bd37799c5b589185817cee5c705'
 const supabase = createClient(SUPBASEURL, SUPABASEKEY, options)
 
 export const handler = schedule("@hourly" ,async (event, context) => {
-  fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
+  await fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
     .then(resp => resp.json())
     .then((item) => {
       for(let i = 0; i < item.articles.length; i++) {
@@ -48,8 +48,8 @@ const requestOptions = {
   body: formdata,
   redirect: 'follow'
 };
-setTimeout(() => {
-  fetch(`https://api.meaningcloud.com/summarization-1.0`, requestOptions)
+setTimeout(async () => {
+   await fetch(`https://api.meaningcloud.com/summarization-1.0`, requestOptions)
    .then(res => res.json())
    .then((info) => {
        let PostData = {
