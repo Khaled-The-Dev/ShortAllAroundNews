@@ -51,7 +51,7 @@ const requestOptions = {
 setTimeout(async () => {
    await fetch(`https://api.meaningcloud.com/summarization-1.0`, requestOptions)
    .then(res => res.json())
-   .then((info) => {
+   .then(async (info) => {
        let PostData = {
          Title: item[i].title,
          Info: info.summary,
