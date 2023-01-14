@@ -72,10 +72,12 @@ export const handler = schedule('@hourly', async (event, context) => {
          }
          // adding it to the database
          
-           const { error } = await supabase
+           supabase
              .from('News')
              .insert([
                 SupabasePost
-               ])
+               ]).then(() => {
+                 console.log('New Data Sent!');
+               })
    })
 })
