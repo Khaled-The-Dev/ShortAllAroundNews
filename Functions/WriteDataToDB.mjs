@@ -39,7 +39,7 @@ export const handler = schedule('@hourly', async (event, context) => {
    
    const NewsDataRes = await NewsData.json()
    // Looping through the response
-   NewsDataRes.forEach(async item => {
+   NewsDataRes.articles.forEach(async item => {
      // creating a form data object
      
      const SummarizeFormData = new FormData()
@@ -78,7 +78,6 @@ export const handler = schedule('@hourly', async (event, context) => {
              .insert([
                 SupabasePost
                ])
-
      })
    })
 })
