@@ -58,7 +58,7 @@ export const handler = schedule('@hourly', async (event, context) => {
      
      // Post request to summarize api
      
-     const SummarizeRequest = await fetch('https://api.meaningcloud/summarization-1.0', SummarizeReqOption)
+     const SummarizeRequest = await fetch('https://api.meaningcloud.com/summarization-1.0', SummarizeReqOption)
      // covert to json
      const SummarizeJson = await SummarizeRequest.json()
      // looping through response
