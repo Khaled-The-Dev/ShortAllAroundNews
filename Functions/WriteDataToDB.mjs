@@ -63,11 +63,10 @@ export const handler = schedule('@hourly', async (event, context) => {
      const SummarizeJson = await SummarizeRequest.json()
      // looping through response
      
-     SummarizeJson.forEach(async (SummaryItem) => {
        // creating a data object
          let SupabasePost = {
            Title: item.title,
-           Info: SummaryItem.summary,
+           Info: SummarizeJson.summary,
            ImageUrl: item.urlToImage,
            ImgAlt: item.descreption
          }
@@ -78,6 +77,5 @@ export const handler = schedule('@hourly', async (event, context) => {
              .insert([
                 SupabasePost
                ])
-     })
    })
 })
