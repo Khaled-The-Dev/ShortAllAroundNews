@@ -31,47 +31,54 @@ const SUMMARIZEKEY = '54987bd37799c5b589185817cee5c705'
 
 const supabase = createClient(SUPBASEURL, SUPABASEKEY, options)
 
-export const handler = schedule("@hourly" ,async (event, context) => {
-  await fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazeera-english,cbc-news,cnn&apiKey=${NewsApiKey}`)
-    .then(resp => resp.json())
-    .then((item) => {
-      for(let i = 0; i < item.articles.length; i++) {
-    //  console.log(data.url);
-    
-const formdata = new FormData();
-formdata.append("key", SUMMARIZEKEY);
-console.log(item.articles[i].url);
-formdata.append("url", `${item.articles[i].url}`);
-formdata.append("sentences", 5);
-const requestOptions = {
-  method: 'POST',
-  body: formdata,
-  redirect: 'follow'
-};
-setTimeout(async () => {
-   await fetch(`https://api.meaningcloud.com/summarization-1.0`, requestOptions)
-   .then(res => res.json())
-   .then(async (info) => {
-       let PostData = {
-         Title: item[i].title,
-         Info: info.summary,
-         ImageUrl: item[i].urlToImage,
-         ImgAlt: item[i]. description
-       }
-       console.log(item[i], info);
-       let { data, error } = await supabase
-  .from('News')
-  .insert([
-     PostData
-  ])
-  .then(() => {
-     console.log('Insterted Data');
-    })
-  })
-},5000)
-}
-})
-  return {
-    statusCode: 200
-  }
+export const handler = schedule('@hourly', async (event, context) => {
+   // Fetching data from news api
+   
+   const NewsData = await fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,al-jazzera-english,cnn,cbc-news&apiKey=${NewsApiKey}`)
+   // Convert to json
+   
+   const NewsDataRes = await NewsData.json()
+   // Looping through the response
+   NewsDataRes.forEach(async item => {
+     // creating a form data object
+     
+     const SummarizeFormData = new FormData()
+     
+     SummarizeFormData.append('key', SUMMARIZEKEY)
+     SummarizeFormData.append('url', item.url)
+     SummarizeFormData.append('sentences', 5)
+     
+     // creating a request body to summarize api
+     
+     const SummarizeReqOption = {
+       method: 'POST',
+       body: SummarizeFormData,
+       redirect: 'follow'
+     }
+     
+     // Post request to summarize api
+     
+     const SummarizeRequest = await fetch('https://api.meaningcloud/summarization-1.0', SummarizeReqOption)
+     // covert to json
+     const SummarizeJson = await SummarizeRequest.json()
+     // looping through response
+     
+     SummarizeJson.forEach(async (SummaryItem) => {
+       // creating a data object
+         let SupabasePost = {
+           Title: item.title,
+           Info: SummaryItem.summary,
+           ImageUrl: item.urlToImage,
+           ImgAlt: item.descreption
+         }
+         // adding it to the database
+         
+           const { error } = await supabase
+             .from('News')
+             .insert([
+                SupabasePost
+               ])
+
+     })
+   })
 })
