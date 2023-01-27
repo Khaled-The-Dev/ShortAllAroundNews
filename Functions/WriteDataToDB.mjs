@@ -73,7 +73,7 @@ NewsDataRes.articles.forEach(async item => {
       Title: item.title,
       Info: SummarizeJson.summary,
       ImageUrl: item.urlToImage,
-      ImgAlt: item.descreption,
+      ImgAlt: item.description,
     }).then(() => {
       console.log('New Data Sent!');
     })
