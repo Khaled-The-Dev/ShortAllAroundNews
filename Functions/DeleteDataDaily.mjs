@@ -31,7 +31,6 @@ const SUMMARIZEKEY = '54987bd37799c5b589185817cee5c705'
 
 const supabase = createClient(SUPBASEURL, SUPABASEKEY, options)
 
-const handler = schedule('@daily', async (event, context) => {
-   const {data: DeletedRow, error} = await supabase.from('News').
-   .delete().neq('id', 0)
+const handler = schedule('@weekly', async (event, context) => {
+   const {data: DeletedRow, error} = await supabase.from('News').delete().neq('id', 0)
 })
