@@ -21,13 +21,13 @@ const options = {
   },
 }
 
-const SUPBASEURL = 'https://cslqxawajhhzbphncvbp.supabase.co'  
-const SUPABASEKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzbHF4YXdhamhoemJwaG5jdmJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjcxMjY5OTAsImV4cCI6MTk4MjcwMjk5MH0.gn_2JOlY9aj4EED2MfD_9honCPzqJGxqkwbq8RBIOWI'
+const SUPBASEURL = 'SUPBASEURL'  
+const SUPABASEKEY = 'Sensetive info here'
 
 
-const NewsApiKey = '4b37e040fd5244e7be79bbe50eeb16a8'
+const NewsApiKey = 'Api key'
 
-const SUMMARIZEKEY = '54987bd37799c5b589185817cee5c705'
+const SUMMARIZEKEY = 'Api key'
 
 const supabase = createClient(SUPBASEURL, SUPABASEKEY, options)
 
